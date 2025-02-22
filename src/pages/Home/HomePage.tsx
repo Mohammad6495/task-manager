@@ -29,7 +29,7 @@ const HomePage = () => {
                     <div className="d-flex flex-column w-100">
                         {
                             parenAllData?.length !== 0 ?
-                                parenAllData.map((item) => {
+                                parenAllData.sort((a, b) => a.id.localeCompare(b.id)).map((item) => {
                                     return (
                                         <BoxItem
                                             selectIdsParent={selectIdsParent}
@@ -53,7 +53,7 @@ const HomePage = () => {
                     </div>
                     <div className="d-flex flex-column w-100">
                         {
-                            selectItems.map((item) => {
+                            selectItems.sort((a, b) => a.id.localeCompare(b.id)).map((item) => {
                                 return (
                                     <BoxItem
                                         selectIdsParent={selectRemovedIdsParent}

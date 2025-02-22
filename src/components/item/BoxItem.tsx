@@ -19,10 +19,9 @@ const BoxItem: React.FC<Props> = ({ item, handleChangeSelectId, selectIdsChild, 
     const [expanded, setExpanded] = React.useState<string | false>(false);
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-    const handleChange =
-        (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-            setExpanded(isExpanded ? panel : false);
-        };
+    const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+        setExpanded(isExpanded ? panel : false);
+    };
 
     return (
         <Accordion sx={{ width: '100%', zIndex: 2 }} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
@@ -52,7 +51,7 @@ const BoxItem: React.FC<Props> = ({ item, handleChangeSelectId, selectIdsChild, 
             </AccordionSummary>
             <AccordionDetails sx={{ width: '100%' }}>
                 {
-                    item.children.map((child, index) => (
+                    item.children.sort((a, b) => a.uniqueId - b.uniqueId).map((child, index) => (
                         <div className=" w-100 d-flex align-items-center justify-content-between mb-2 rounded px-2" key={index} style={{ border: '1px solid rgb(199, 197, 197)', backgroundColor: 'rgb(241, 241, 241)' }}>
                             <div>
                                 #{child.uniqueId}
